@@ -123,8 +123,8 @@ contract OsirisPresale is Context, ReentrancyGuard {
     uint256 constant tokensPerAVAX = 17;
     uint256 public lockedLiquidityAmount;
     uint256 public timeTowithdrawTeamTokens;
-    uint256 public timeToWithdrawPool = 0 days;
-    uint256 public incentivesTimeLocked = 0 days;
+    uint256 public timeToWithdrawPool = 365 days;
+    uint256 public incentivesTimeLocked =  days;
     bool public TimelockActive =  false;
     uint256 public refundTime; 
     mapping(address => uint) avaxSpent;
