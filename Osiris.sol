@@ -691,9 +691,6 @@ contract Osiris is Context, IERC20, Ownable, ReentrancyGuard {
     
     IPangolinRouter02 public constant pangolinRouter = IPangolinRouter02(0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106);
     address public immutable AVAXPair;
-    address private weth = 0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15;
-    address private dai = 0xbA7dEebBFC5fA1100Fb055a87773e1E99Cd3507a;
-    uint256 public minTokensBeforeAddToLP;
 
     mapping (address => uint256) private _rOwned;
     mapping (address => uint256) private _tOwned;
