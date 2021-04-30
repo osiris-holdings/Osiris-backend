@@ -1,7 +1,3 @@
-/**
- *Submitted for verification at Etherscan.io on 2021-03-22
-*/
-
 pragma solidity ^0.7.0;
 //SPDX-License-Identifier: UNLICENSED
 
@@ -43,7 +39,7 @@ abstract contract Context {
     }
 
     function _msgData() internal view virtual returns (bytes memory) {
-        this; // silence state mutability warning without generating bytecode - see https://github.com/avaxeum/solidity/issues/2691
+        this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691
         return msg.data;
     }
 }
@@ -123,7 +119,7 @@ contract OsirisPresale is Context, ReentrancyGuard {
     uint256 constant tokensPerAVAX = 17;
     uint256 public lockedLiquidityAmount;
     uint256 public timeTowithdrawTeamTokens;
-    uint256 public timeToWithdrawPool = 365 days;
+    uint256 public timeToWithdrawPool = block.timestamp.add(365 days);
     uint256 public incentivesTimeLocked = 0 days;
     bool public TimelockActive =  false;
     uint256 public refundTime; 
@@ -155,7 +151,7 @@ contract OsirisPresale is Context, ReentrancyGuard {
         require(TimelockActive = false, "Timelock is still active");
         incentivePool = _incentivePool;
         amountQueued = _amountQueued;
-        incentivesTimeLocked += 3 days;
+        incentivesTimeLocked = block.timestamp.add(3 days);
         TimelockActive = true;
     }
     
