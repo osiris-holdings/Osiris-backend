@@ -234,10 +234,11 @@ contract OsirisPresale is Context, ReentrancyGuard {
     function allocateAndAddLiquidity() external onlyOwner  {
        require(!teamClaimed);
        uint256 amountAVAX = address(this).balance.mul(15).div(100); 
-       uint256 amountAVAX2 = address(this).balance.mul(10).div(100); 
+       uint256 amountAVAX2 = address(this).balance.mul(10).div(100);
+       teamClaimed = true; //prevent reentrancys 
        team.transfer(amountAVAX);
        marketing.transfer(amountAVAX2);
-       teamClaimed = true;
+       
        
        addLiquidity();
     }
