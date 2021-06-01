@@ -94,7 +94,7 @@ contract OsirisPresale is Context, ReentrancyGuard {
     bool public isRefundEnabled = false;
     bool public presaleStarted = false;
     bool justTrigger = false;
-    uint public teamTokens = 100000e9;
+    uint public teamTokens = 75000e9;
     uint constant daoReserve = 100000e9;
     
     address private incentivePool;
@@ -107,7 +107,7 @@ contract OsirisPresale is Context, ReentrancyGuard {
     address public pool;
     
     uint256 public avaxSent;
-    uint256 constant tokensPerAVAX = 17;
+    uint256 constant tokensPerAVAX = 19;
     uint256 public lockedLiquidityAmount;
     uint256 public timeTowithdrawTeamTokens;
     uint256 public timeToWithdrawPool = block.timestamp.add(365 days);
@@ -237,7 +237,7 @@ contract OsirisPresale is Context, ReentrancyGuard {
         
     function addLiquidity() internal {
         uint256 AVAX = address(this).balance;
-        uint256 tokensForPangolin = address(this).balance.mul(14).div(10 ** 9); //14 OSIR per AVAX
+        uint256 tokensForPangolin = address(this).balance.mul(17).div(10 ** 9); //14 OSIR per AVAX
         uint256 tokensToBurn = OSIR.balanceOf(address(this)).sub(tokensForPangolin).sub(teamTokens)
         .sub(daoReserve);
         
