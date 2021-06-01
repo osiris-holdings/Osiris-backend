@@ -25,14 +25,6 @@ interface IPNG {
 
 }
 
-
-
-interface IPangolinFactory {
-  event PairCreated(address indexed token0, address indexed token1, address pair, uint);
-
-  function createPair(address tokenA, address tokenB) external returns (address pair);
-}
-
 abstract contract Context {
     function _msgSender() internal view virtual returns (address payable) {
         return msg.sender;
@@ -94,7 +86,6 @@ contract OsirisPresale is Context, ReentrancyGuard {
     address public _burnPool = 0x000000000000000000000000000000000000dEaD;
 
     IPNG constant pangolin =  IPNG(0xE54Ca86531e17Ef3616d22Ca28b0D458b6C89106);
-    IPangolinFactory constant pangolinFactory = IPangolinFactory(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
 
     uint public tokensBought;
     bool public isStopped = false;
