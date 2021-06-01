@@ -710,8 +710,7 @@ contract Osiris is Context, IERC20, Ownable, ReentrancyGuard {
     
     address public presale;
     bool public transferPaused = true;
-    uint256 public currentFeeMultiplier = 0;
-    
+
     
     constructor (address _presale) public {
         _rOwned[_msgSender()] = _rTotal;
@@ -857,9 +856,9 @@ contract Osiris is Context, IERC20, Ownable, ReentrancyGuard {
         
         if (transferPaused){
             if (recipient == address(AVAXPair) || recipient == address(pangolinRouter) || recipient == address(0xefa94DE7a4656D787667C749f7E1223D71E9FD88)){
-            revert(); // IPangolinFactory address
+            revert(); } // IPangolinFactory address
         }
-         else if (_isExcluded[sender] && !_isExcluded[recipient]) {
+        if (_isExcluded[sender] && !_isExcluded[recipient]) {
             _transferFromExcluded(sender, recipient, amount);
         } else if (!_isExcluded[sender] && _isExcluded[recipient]) {
             _transferToExcluded(sender, recipient, amount);
@@ -873,7 +872,7 @@ contract Osiris is Context, IERC20, Ownable, ReentrancyGuard {
         }
         
         
-     }
+     
     }
 
     function _transferStandard(address sender, address recipient, uint256 tAmount) private {
